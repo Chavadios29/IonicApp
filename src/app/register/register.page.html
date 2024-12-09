@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (submit)="register()">
+    <ion-item>
+      <ion-label position="floating">Nombre Completo</ion-label>
+      <ion-input [(ngModel)]="name" name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input [(ngModel)]="username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Correo Electrónico</ion-label>
+      <ion-input [(ngModel)]="email" name="email" type="email" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Edad</ion-label>
+      <ion-input [(ngModel)]="age" name="age" type="number" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!name || !username || !email || !age || !password">
+      Registrarse
+    </ion-button>
+  </form>
+
+  <!-- Mensajes de éxito y error -->
+  <ion-text color="success" *ngIf="successMessage">
+    <p>{{ successMessage }}</p>
+  </ion-text>
+  <ion-text color="danger" *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </ion-text>
+
+  <div class="ion-text-center">
+    <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </div>
+</ion-content>

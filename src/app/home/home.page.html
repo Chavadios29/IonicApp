@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goToProfile()">
+        <ion-icon name="person"></ion-icon> <!-- Ícono de perfil -->
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista de publicaciones -->
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <ion-avatar slot="start">
+        <img [src]="post.image_url || 'assets/cafe.jpg'" alt="Avatar" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ post.user_id }}</h2>
+        <p>{{ post.description }}</p>
+        <ion-note>{{ post.created_at | date: 'short' }}</ion-note>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mostrar el video de YouTube, si hay una URL -->
+  <ion-card *ngFor="let post of posts">
+    <ion-card-content>
+      <p class="post-description">{{ post.description }}</p>
+    </ion-card-content>
+
+    <ion-img
+      [src]="post.image_url || 'assets/image-placeholder.png'"
+      alt="Post Image"
+      class="post-image"
+    ></ion-img>
+
+    <!-- Reproductor de video de YouTube -->
+    <div *ngIf="post.videoUrl">
+      <iframe
+        class="video-frame"
+        [src]="getSafeUrl(post.videoUrl)"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <ion-card-content>
+      <div class="post-actions">
+        <ion-icon
+          [color]="post.liked ? 'danger' : 'medium'"
+          name="heart"
+          (click)="toggleLike(post)"></ion-icon>
+        <span>{{ post.likes }} Likes</span>
+        <ion-icon name="chatbubble" color="medium"></ion-icon>
+        <span>Comentario</span>
+        <ion-icon name="share-social" color="medium"></ion-icon>
+        <span>Compartir</span>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<!-- Barra de pestañas (Tab Bar) -->
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <!-- Tab Inicio -->
+    <ion-tab-button (click)="goToHome()">
+      <ion-icon name="home"></ion-icon>
+      <span>Inicio</span>
+    </ion-tab-button>
+
+    <!-- Tab Buscar -->
+    <ion-tab-button (click)="goToSearch()">
+      <ion-icon name="search"></ion-icon>
+      <span>Buscar</span>
+    </ion-tab-button>
+
+    <!-- Tab Crear -->
+    <ion-tab-button (click)="openCreatePostModal()">
+      <ion-icon name="add-circle" size="large"></ion-icon>
+      <span>Crear</span>
+    </ion-tab-button>
+
+    <!-- Tab Notificaciones -->
+    <ion-tab-button (click)="goToNotifications()">
+      <ion-icon name="notifications"></ion-icon>
+      <span>Notificaciones</span>
+    </ion-tab-button>
+
+    <!-- Tab Configuración -->
+    <ion-tab-button (click)="goToSettings()">
+      <ion-icon name="settings"></ion-icon>
+      <span>Configuración</span>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

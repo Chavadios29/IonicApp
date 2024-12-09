@@ -1,0 +1,13 @@
+{
+  "name": "ionic_proyecto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+"proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost:3001"
+    }
+  ]
+}

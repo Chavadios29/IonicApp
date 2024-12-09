@@ -1,0 +1,42 @@
+:root {
+  --tab-button-margin: 30px; // Margen para los botones de la pestaña
+  --create-button-color: #3880ff; // Color del botón de crear
+  --footer-background: #fff; // Color de fondo del footer
+}
+
+// Estilo para los botones de la pestaña
+.tab-button {
+  margin: 0 var(--tab-button-margin); // Margen horizontal
+}
+
+// Estilo para el footer
+ion-footer {
+  background-color: var(--footer-background); // Color de fondo
+}
+
+// Estilo para el botón de crear
+.create-post-button {
+  background-color: var(--create-button-color); // Color del botón de crear
+  color: white;
+  border-radius: 50%;
+  height: 56px; // Tamaño del botón
+  width: 56px;
+}
+
+// Estilo para el contenido
+ion-content {
+  --overflow: auto; // Asegura que el contenido sea desplazable
+  padding: 16px; // Espaciado interno
+}
+
+// Responsividad
+@media (max-width: 768px) {
+  .tab-button {
+    margin: 0 10px; // Menos margen en pantallas pequeñas
+  }
+
+  .create-post-button {
+    height: 48px; // Ajustar el tamaño en pantallas más pequeñas
+    width: 48px;
+  }
+}

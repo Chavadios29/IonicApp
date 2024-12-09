@@ -1,0 +1,12 @@
+#player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  #player {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+  

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="info">
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="goToSettings()" color="secondary">Configuración</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Información del Usuario</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input [(ngModel)]="user.username" placeholder="Nombre de usuario"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="user.email" placeholder="Email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Foto de perfil</ion-label>
+        <ion-avatar slot="start">
+          <img [src]="user.profilePicUrl || 'assets/cafe.jpg'" alt="Perfil" />
+        </ion-avatar>
+        <input type="file" (change)="onProfilePicChange($event)" />
+      </ion-item>
+
+      <ion-button expand="full" color="tertiary" (click)="saveProfile()">Guardar Cambios</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+ 
+  <div id="container" class="ion-margin-top">
+    <ion-button expand="full" color="success" routerLink="/camara">
+      <ion-icon slot="start" name="camera-sharp"></ion-icon>
+      Abrir Cámara
+    </ion-button>
+    <ion-button expand="full" color="warning" routerLink="/sensores">
+      <ion-icon slot="start" name="radio"></ion-icon>
+      Abrir Sensores
+    </ion-button>
+    <ion-button expand="full" color="danger" routerLink="/radio-streaming">
+      <ion-icon slot="start" name="volume-high"></ion-icon>
+      Abrir Radio
+    </ion-button>
+  </div>
+</ion-content>
+
+<style>
+  ion-card {
+    margin: 10px;
+  }
+
+  #container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  ion-button {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 0;
+    align-items: center;
+  }
+
+  ion-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 600px) {
+    ion-card {
+      margin: 5px;
+    }
+
+    ion-button {
+      font-size: 14px;
+    }
+  }
+</style>

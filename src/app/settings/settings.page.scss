@@ -1,0 +1,27 @@
+/* settings.page.scss */
+.settings-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  ion-title {
+    color: #4a90e2;  /* Color para el título */
+    font-size: 24px;
+  }
+  
+  ion-label {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  ion-item {
+    --background: #ffffff;
+    --border-color: #e0e0e0;
+    margin-bottom: 10px;
+  }
+  
+  ion-toggle {
+    --handle-background: #4a90e2;  /* Color del interruptor */
+    --track-background: #e0e0e0;
+  }
+  
